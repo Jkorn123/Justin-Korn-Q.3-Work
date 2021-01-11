@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assignment #1</title>
+    <meta charset="utf-8"></meta>
+    <script defer src="javacode.js"></script>
+    <style>
+    #div, button {
+      font-size: 100%;
+    }
+    input {
+      font-size: 100%;
+    }
+    </style>
+  </head>
+  <body>
+    <!--- Input tag - Text --->
+    <div id="div">
+      <p>
+        <label for='fname'>First Name:</label>
+        <input id='fname' name='fname' type='text' />
+        <br />
+        <label for='lname'>Last Name:</label>
+        <input id='lname' name='lname' type='text' />
+      </p>
+      <button onclick='buttonClick()'>Click here!</button>
+    </div>
+
+    <!--- Input tag - Checkbox --->
+    <div id="div2">
+      <p>
+        <input id='justin' name='person' type='checkbox' />
+        <label for='justin'>Justin Korn</label>
+        <br />
+        <input id='bryan' name='person' type='checkbox' />
+        <label for='bryan'>Bryan Korn</label>
+      </p>
+      <button onclick="buttonClick2()">Click here!</button>
+    </div>
+
+
+  </body>
+</html>
