@@ -15,42 +15,42 @@
   </head>
   <body>
     <!--- Input tag - Text --->
-    <div id="div">
+    <div id="name">
       <p>
-        <label for='fname'>First Name:</label>
+        <label for='fname'>First Name:</label><br />
         <input id='fname' name='fname' type='text' />
         <br />
-        <label for='lname'>Last Name:</label>
+        <label for='lname'>Last Name:</label><br />
         <input id='lname' name='lname' type='text' />
       </p>
-      <button onclick='buttonClick()'>Click here!</button>
+      <button onclick='enterName()'>Enter</button>
 
     </div>
 
     <!--- Input tag - Radio --->
-    <div id="div2">
+    <div id="check">
       <p>
         <input id='justin' name='person' type='radio' />
-        <label for='justin'>Justin Korn</label>
-        <br />
+        <label for='justin'>Justin Korn</label><br />
         <input id='bryan' name='person' type='radio' />
-        <label for='bryan'>Bryan Korn</label>
+        <label for='bryan'>Bryan Korn</label><br />
+        <input id='bobby' name='person' type='radio' />
+        <label for='bobby'>Bobby Korn</label><br />
       </p>
-      <button onclick="buttonClick2()">Click here!</button>
+      <button onclick="selectName()">Enter</button>
     </div>
-
-
-    <!--- Input tag - Text --->
-<!---    <div id="div3">
+    <!--- Input tag - Checkbox --->
+    <div id="checkBox">
       <p>
-        <label for='uname'>Username:</label>
-        <input id='uname' name='uname' type='text' />
-        <br />
-        <label for='pword'>Password:</label>
-        <input id='pword' name='pword' type='text' />
+        <input type="checkbox" id="pizza" name="food" value="Pizza">
+        <label for="food1">Pizza</label><br />
+        <input type="checkbox" id="chips" name="food" value="Chips">
+        <label for="food2">Chips</label><br />
+        <input type="checkbox" id="hamburger" name="food" value="Hamburgers">
+        <label for="food3">Hamburgers</label><br />
       </p>
-      <button onclick='userPass()'>Click here!</button>
-    </div> --->
+      <button onclick='getFood()'>Enter</button>
+    </div>
 
   </body>
 </html>

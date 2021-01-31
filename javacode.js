@@ -1,6 +1,8 @@
-div = document.getElementById("div");
+userName = document.getElementById("name");
+checkName = document.getElementById("check");
+selectFood = document.getElementById("checkBox");
 
-function buttonClick () {
+function enterName () {
   var fname = document.getElementById('fname').value;
   var lname = document.getElementById('lname').value;
   console.log(fname, lname);
@@ -9,69 +11,73 @@ function buttonClick () {
     'firstName': fname,
     'lastName': lname,
   }
-  strData2 = localStorage.getItem("fname/lname");
-  data = JSON.parse(strData2);
-  // Create array to store JSON objects
-  data.push(myJSON);
-  strData = JSON.stringify(data);
-  localStorage.setItem("fname/lname", strData);
-
-  console.log(localStorage);
-  console.log(myJSON);
-  console.log(data);
-
-  if (myJSON['firstName'] == 'justin' || 'Justin') {
-    div.innerHTML = "\n";
-    div.innerHTML += "\t\t<h1>That's me!</h1>\n"
-    div.innerHTML += "\t\t<img src='picture.jpg' />\n"
-    div.innerHTML += "\t\t<p>" + myJSON['firstName'] + " " + myJSON['lastName'] + "</p>\n";
-  } else {
-    div.innerHTML = "\n";
-    div.innerHTML += "\t\t<p>That's not me!<p>";
+  //Checks if there is any data b/c you can't get data if there is no data!
+  //Creates a list for all the data that will be entered.
+  if(localStorage.getItem('data') == null) {
+    localStorage.setItem('data', '[]');
   }
+
+  //Gets the last entered data from the previous session.
+  //Currently a work in progress.
+
+
+  var oldData = JSON.parse(localStorage.getItem('data'));
+  oldData.push(myJSON);
+  localStorage.setItem('data', JSON.stringify(oldData));
+  console.log(localStorage);
 
 }
 
-div2 = document.getElementById("div2");
-
-function buttonClick2 () {
+function selectName () {
   var justin = document.getElementById('justin');
   var bryan = document.getElementById('bryan');
+  var bobby = document.getElementById('bobby');
   myJSON = {
     'justin': 'Justin',
     'bryan': 'Bryan',
+    'bobby': 'Bobby',
+    'wanya': 'Wanya',
     'justinCheck': justin.checked,
     'bryanCheck': bryan.checked,
+    'bobbyCheck': bobby.checked,
   }
 
+  checkName.innerHTML = "\n";
   if (myJSON['justinCheck']) {
-    div2.innerHTML = "\n";
-    div2.innerHTML += "\t\t<h1>That's also me!</h1>\n"
-    div2.innerHTML += "\t\t<img src='picture.jpg' />\n"
-    div2.innerHTML += "\t\t<p>" + myJSON['justin'] + " " + 'Korn' + "</p>\n";
+    checkName.innerHTML += "\t\t<h1>That's me!</h1>\n"
+    checkName.innerHTML += "\t\t<img src='picture.jpg' />\n"
+    checkName.innerHTML += "\t\t<p>" + myJSON['justin'] + " " + 'Korn' + "</p>\n";
   } else if (myJSON['bryanCheck']) {
-    div2.innerHTML = "\n";
-    div2.innerHTML += "\t\t<h1>That's not me!</h1>\n"
-    div2.innerHTML += "\t\t<img src='Bryan.png' />\n"
-    div2.innerHTML += "\t\t<p>" + myJSON['bryan'] + " " + 'Korn' + "</p>\n";
+    checkName.innerHTML += "\t\t<h1>That's my brother!</h1>\n"
+    checkName.innerHTML += "\t\t<img src='Bryan.png' />\n"
+    checkName.innerHTML += "\t\t<p>" + myJSON['bryan'] + " " + 'Korn' + "</p>\n";
+  } else if (myJSON['bobbyCheck']) {
+    checkName.innerHTML += "\t\t<h1>That's my dad!</h1>"
   } else {
-    div2.innerHTML = "\n";
-    div2.innerHTML += "\t\t<p>You didn't select a name!</p>\n";
+    checkName.innerHTML += "\t\t<p>You didn't select a name!</p>\n";
   }
 }
 
-// Test code for local Storage.
-//div3 = document.getElementById("div3");
-//function userPass() {
-//  var uname = document.getElementById('uname').value;
-//  var pword = document.getElementById('pword').value;
-//  var unamedata = localStorage.getItem("uname")
-//  if (unamedata != "") {
-
-//    div3.innerHTML = "\n";
-//    document.getElementById("div3").innerHTML += localStorage.getItem("username");
-//    document.getElementById("div3").innerHTML += localStorage.getItem("password");
-//  } else {
-//    document.getElementById("div3").innerHTML = "browser does not support storage";
-//  }
-//}
+// Still a work in progress. Trying to check multiple boxes at once and getting
+// multiple data points. Currently only works with one.
+function getFood() {
+  var pizza = document.getElementById('pizza');
+  var chips = document.getElementById('chips');
+  var hamburger = document.getElementById('hamburger');
+  myJSON = {
+    'pizzaCheck': pizza.checked,
+    'chipsCheck': chips.checked,
+    'hamburgerCheck': hamburger.checked,
+  }
+  console.log(myJSON)
+  selectFood.innerHTML = "\n";
+  if (myJSON['pizzaCheck'] == true) {
+    selectFood.innerHTML += "\t\t<p>You must like pizza!</p>";
+  } else if (myJSON['chipsCheck'] == true) {
+    selectFood.innerHTML += "\t\t<p>You must like chips!</p>";
+  } else if (myJSON['hamburgerCheck'] == true) {
+    selectFood.innerHTML += "\t\t<p>You must like hamburgers!<p>";
+  } else {
+    selectFood.innerHTML += "\t\t<p>You must hate snacks!<p>";
+  }
+}
