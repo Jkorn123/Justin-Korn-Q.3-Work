@@ -1,6 +1,6 @@
-userName = document.getElementById("name");
 checkName = document.getElementById("check");
 selectFood = document.getElementById("checkBox");
+userName = document.getElementById("name");
 
 function enterName () {
   var fname = document.getElementById('fname').value;
@@ -18,14 +18,18 @@ function enterName () {
   }
 
   //Gets the last entered data from the previous session.
-  //Currently a work in progress.
-
-
   var oldData = JSON.parse(localStorage.getItem('data'));
   oldData.push(myJSON);
   localStorage.setItem('data', JSON.stringify(oldData));
   console.log(localStorage);
-
+  console.log(oldData);
+  var x = oldData[oldData.length -2];
+  f = x['firstName'];
+  l = x['lastName']
+  console.log(x)
+  userName.innerHTML = "\n";
+  userName.innerHTML += "\t\t<p>" + "Your previous entry was:" +
+  " " + f + " " + l + "</p>\n";
 }
 
 function selectName () {
@@ -58,8 +62,6 @@ function selectName () {
   }
 }
 
-// Still a work in progress. Trying to check multiple boxes at once and getting
-// multiple data points. Currently only works with one.
 function getFood() {
   var pizza = document.getElementById('pizza');
   var chips = document.getElementById('chips');
@@ -70,14 +72,16 @@ function getFood() {
     'hamburgerCheck': hamburger.checked,
   }
   console.log(myJSON)
+  //Checks which of the boxes have been checked by the user and will display certain
+  //messages depending on their input.
   selectFood.innerHTML = "\n";
-  if (myJSON['pizzaCheck'] == true) {
+  if (myJSON['pizzaCheck']) {
     selectFood.innerHTML += "\t\t<p>You must like pizza!</p>";
-  } else if (myJSON['chipsCheck'] == true) {
+  } if (myJSON['chipsCheck']) {
     selectFood.innerHTML += "\t\t<p>You must like chips!</p>";
-  } else if (myJSON['hamburgerCheck'] == true) {
+  } if (myJSON['hamburgerCheck']) {
     selectFood.innerHTML += "\t\t<p>You must like hamburgers!<p>";
-  } else {
+  } if (!(myJSON['pizzaCheck']) && !(myJSON['chipsCheck']) && !(myJSON['hamburgerCheck'])) {
     selectFood.innerHTML += "\t\t<p>You must hate snacks!<p>";
   }
 }
