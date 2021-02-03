@@ -5,31 +5,39 @@ userName = document.getElementById("name");
 function enterName () {
   var fname = document.getElementById('fname').value;
   var lname = document.getElementById('lname').value;
+  var birthday = document.getElementById('birthday').value;
   console.log(fname, lname);
+  console.log(birthday);
 
   myJSON = {
     'firstName': fname,
     'lastName': lname,
+    'birthday': birthday,
   }
   //Checks if there is any data b/c you can't get data if there is no data!
   //Creates a list for all the data that will be entered.
-  if(localStorage.getItem('data') == null) {
-    localStorage.setItem('data', '[]');
+  if(localStorage.getItem('userdata') == null) {
+    localStorage.setItem('userdata', '[]');
   }
 
   //Gets the last entered data from the previous session.
-  var oldData = JSON.parse(localStorage.getItem('data'));
+  var oldData = JSON.parse(localStorage.getItem('userdata'));
   oldData.push(myJSON);
-  localStorage.setItem('data', JSON.stringify(oldData));
+  localStorage.setItem('userdata', JSON.stringify(oldData));
   console.log(localStorage);
   console.log(oldData);
   var x = oldData[oldData.length -2];
   f = x['firstName'];
-  l = x['lastName']
+  l = x['lastName'];
+  b = x['birthday'];
   console.log(x)
   userName.innerHTML = "\n";
-  userName.innerHTML += "\t\t<p>" + "Your previous entry was:" +
-  " " + f + " " + l + "</p>\n";
+  //Show user their current entry.
+  userName.innerHTML += "\t\t<p>" + "Name:" + " " + myJSON['firstName']
+  + " " + myJSON['lastName'] + ", " + "Birthday:" + " " + myJSON['birthday'] + "</p>";
+  //Show user their previous entry.
+  userName.innerHTML += "\t\t<p>" + "Your previous entry for:" +
+  " " + f + " " + l + "</p>";
 }
 
 function selectName () {

@@ -16,12 +16,16 @@
   <body>
     <!--- Input tag - Text --->
     <div id="name">
+      <h1>Enter Your Info:</h1>
       <p>
         <label for='fname'>First Name:</label><br />
         <input id='fname' name='fname' type='text' />
         <br />
         <label for='lname'>Last Name:</label><br />
         <input id='lname' name='lname' type='text' />
+        <br>
+        <label for="birthday">Birthday:</label><br />
+        <input type="date" id="birthday" name="birthday">
       </p>
       <button onclick='enterName()'>Enter</button>
 
@@ -50,7 +54,5 @@
       </p>
       <button onclick='getFood()'>Enter</button>
     </div>
-
-
   </body>
 </html>
