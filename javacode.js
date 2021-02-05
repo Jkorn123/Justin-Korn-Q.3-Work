@@ -85,11 +85,14 @@ function getFood() {
   selectFood.innerHTML = "\n";
   if (myJSON['pizzaCheck']) {
     selectFood.innerHTML += "\t\t<p>You must like pizza!</p>";
+    selectFood.innerHTML += "\t\t<img src='Pizza.jpg' />\n"
   } if (myJSON['chipsCheck']) {
     selectFood.innerHTML += "\t\t<p>You must like chips!</p>";
   } if (myJSON['hamburgerCheck']) {
     selectFood.innerHTML += "\t\t<p>You must like hamburgers!<p>";
   } if (!(myJSON['pizzaCheck']) && !(myJSON['chipsCheck']) && !(myJSON['hamburgerCheck'])) {
-    selectFood.innerHTML += "\t\t<p>You must hate snacks!<p>";
+    selectFood.innerHTML += "\t\t<p>You must hate snacks!</p>";
+  } else {
+    selectFood.innerHTML += "\t\t<p>Stop being health!</p>";
   }
 }
